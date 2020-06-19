@@ -17,8 +17,12 @@
     <h1 class="title">Stuff to do:</h1>
     <div class="board">
       <div class="user-input">
-        <input type="text" class="add-task" placeholder="Add new task...">
-        <input type="text" placeholder="Search..." class="search-task">
+        <div class="input-wrap">
+          <input type="text" data-name="add-input" placeholder="Add new task..."><i class="fas fa-plus-circle"></i>
+        </div>
+        <div class="input-wrap">
+          <input type="text" placeholder="Search..." data-name="search-input"><i class="fas fa-search"></i>
+        </div>
       </div>
       <div class="user-tasks">
         <div class="ongoing">
@@ -52,7 +56,6 @@
       </div>
     </div>
   </section>
-
 </body>
 
 </html>

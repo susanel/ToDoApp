@@ -45,13 +45,25 @@ body {
   padding: 10px;
 }
 
-.wrap .board .user-input input {
-  width: 100%;
+.wrap .board .user-input .input-wrap {
   padding: 5px 20px;
   margin-bottom: 10px;
   border-radius: 20px;
-  font-size: 2.4rem;
+  background-color: white;
+}
+
+.wrap .board .user-input .input-wrap input {
   outline: none;
+  font-size: 2.4rem;
+  width: calc(100% - 4.4rem);
+  border: none;
+}
+
+.wrap .board .user-input .input-wrap i {
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  padding: 0 10px;
+  cursor: pointer;
 }
 
 .wrap .board .user-tasks {
@@ -76,6 +88,7 @@ body {
   padding-right: 10px;
   font-size: 3rem;
   line-height: 40px;
+  cursor: pointer;
 }
 
 .wrap .board .user-tasks div p {
