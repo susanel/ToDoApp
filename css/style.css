@@ -71,7 +71,7 @@ body {
   line-height: 40px;
 }
 
-.wrap .board .user-tasks div .icon {
+.wrap .board .user-tasks div i {
   display: block;
   padding-right: 10px;
   font-size: 3rem;
