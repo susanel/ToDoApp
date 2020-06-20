@@ -7,11 +7,42 @@ const ulCompleted = document.querySelector('ul[data-list="completed"]');
 
 const spanTasksNumber = document.querySelector('.count-tasks span');
 const removeBtns = document.querySelectorAll('i.fa-times')
+const showAddInputBtn = document.querySelector('.fa-plus');
+const showSearchInputBtn = document.querySelector('.fa-search');
 
 const allTasksArray = [...document.getElementsByClassName('task')]; //szybki update tablicy o elementy juz zapisane na stronie - dla testu, usunac pozniej
 const activeTasksArray = [];
 const completedTasksArray = [];
 
+
+const showInput = (e) => {
+  const addInputWrap = document.querySelector('.input-wrap:nth-child(1)');
+  const searchInputWrap = document.querySelector('.input-wrap:nth-child(2)');
+  const btn = e.target;
+
+  e.target.classList.toggle('active')
+
+  if (btn.classList.contains('fa-plus')) {
+
+    //if inputSearchTask is visible, replace it with search input
+    if (searchInputWrap.classList.contains('on')) {
+      console.log('add new task wlacna');
+      searchInputWrap.classList.toggle('on');
+      showSearchInputBtn.classList.toggle('active');
+    }
+    addInputWrap.classList.toggle('on')
+
+  } else if (btn.classList.contains('fa-search')) {
+
+    //if inputAddTask is visible, replace it with search input
+    if (addInputWrap.classList.contains('on')) {
+      console.log('add new task wlacna');
+      addInputWrap.classList.toggle('on');
+      showAddInputBtn.classList.toggle('active');
+    }
+    searchInputWrap.classList.toggle('on')
+  }
+}
 
 const searchTask = (e) => {
 
@@ -159,4 +190,7 @@ removeBtns.forEach(btn => {
   btn.addEventListener('click', removeTask)
 })
 
-inputSearchTask.addEventListener('input', searchTask)
+inputSearchTask.addEventListener('input', searchTask);
+
+showAddInputBtn.addEventListener('click', showInput);
+showSearchInputBtn.addEventListener('click', showInput);
