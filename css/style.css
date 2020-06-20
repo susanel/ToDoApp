@@ -50,6 +50,7 @@ body {
   margin-bottom: 10px;
   border-radius: 20px;
   background-color: white;
+  display: none;
 }
 
 .wrap .board .user-input .input-wrap input {
@@ -72,6 +73,10 @@ body {
   line-height: 2.8rem;
   padding: 0 10px;
   cursor: pointer;
+}
+
+.wrap .board .user-input .input-wrap.on {
+  display: block;
 }
 
 .wrap .board ul.user-tasks {
