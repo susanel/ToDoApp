@@ -1,3 +1,9 @@
+//TO-DO:
+// * update searchTask() function - it doesn't filter tasks from Completed Tasks Array:
+// ** Solutions:
+// *** clear completed tasks from searching
+// *** add possibility to search from completed tasks
+
 // Picking up elements
 const form = document.querySelector('form');
 const inputAddTask = document.querySelector('input[data-name="add-input"');
@@ -26,14 +32,11 @@ const showTasksList = (e) => {
 
   //render suitable list
   if (btn.dataset.btn === 'btn-all') {
-    console.log(btn.dataset.btn);
     renderTasksList();
     renderCompletedTasksList();
   } else if (btn.dataset.btn === 'btn-active') {
-    console.log(btn.dataset.btn);
     renderTasksList();
   } else if (btn.dataset.btn === 'btn-completed') {
-    console.log(btn.dataset.btn);
     renderCompletedTasksList();
   }
 }
@@ -96,7 +99,6 @@ const renderCompletedTasksList = () => {
 
 const removeTask = (e) => {
   const index = e.target.parentNode.dataset.key;
-  // console.log(e.target.parentNode);
   if (e.target.parentNode.classList.contains('ongoing')) {
     // console.log('ongoing');
     allTasksArray.splice(index, 1);
@@ -121,7 +123,6 @@ const addCompletedTask = (e) => {
 
     //remove completed task from allTasksArray
     if (completedTask.parentNode.dataset.list === "to-do") {
-      // console.log('jest w to do');
       allTasksArray.splice(index, 1);
       renderTasksList();
       countTasks()
@@ -139,7 +140,6 @@ const addCompletedTask = (e) => {
     renderCompletedTasksList()
 
   } else if (completedTask.classList.contains('ongoing')) {
-    console.log('task ongoing');
 
     //delete task from completedTaskList
     if (completedTask.parentNode.dataset.list === "completed") {
@@ -156,14 +156,6 @@ const addCompletedTask = (e) => {
     renderTasksList();
     countTasks();
   }
-
-  // console.log(completedTasksArray);
-
-}
-
-const addActiveTask = (activeTask) => {
-  activeTasksArray.push(activeTask);
-  // console.log(activeTasksArray);
 
 }
 
@@ -188,7 +180,6 @@ const addNewTask = (e) => {
 
   //update the array
   allTasksArray.push(task);
-  addActiveTask(task);
 
   //update list and show it
   renderTasksList();
@@ -206,10 +197,12 @@ const addNewTask = (e) => {
 }
 
 form.addEventListener('submit', addNewTask)
-// dotyczy tasków przykładowych na stronie - usunąć po usunieciu tych tasków
+// dotyczy tasków przykładowych na stronie - usunąć po usunieciu tych tasków (2 razy add event listener)
 removeBtns.forEach(btn => {
   btn.addEventListener('click', removeTask)
 })
+document.querySelectorAll('.fa-check').forEach(btn => btn.addEventListener('click', addCompletedTask))
+
 
 inputSearchTask.addEventListener('input', searchTask);
 
