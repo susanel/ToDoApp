@@ -9,11 +9,34 @@ const spanTasksNumber = document.querySelector('.count-tasks span');
 const removeBtns = document.querySelectorAll('i.fa-times')
 const showAddInputBtn = document.querySelector('.fa-plus');
 const showSearchInputBtn = document.querySelector('.fa-search');
+const showTasksBtns = document.querySelectorAll('.show-tasks [data-btn]')
 
 const allTasksArray = [...document.getElementsByClassName('task')]; //szybki update tablicy o elementy juz zapisane na stronie - dla testu, usunac pozniej
 const activeTasksArray = [];
 const completedTasksArray = [];
 
+
+const showTasksList = (e) => {
+
+  const btn = e.target;
+
+  //reset
+  ulPending.textContent = '';
+  ulCompleted.textContent = '';
+
+  //render suitable list
+  if (btn.dataset.btn === 'btn-all') {
+    console.log(btn.dataset.btn);
+    renderTasksList();
+    renderCompletedTasksList();
+  } else if (btn.dataset.btn === 'btn-active') {
+    console.log(btn.dataset.btn);
+    renderTasksList();
+  } else if (btn.dataset.btn === 'btn-completed') {
+    console.log(btn.dataset.btn);
+    renderCompletedTasksList();
+  }
+}
 
 const showInput = (e) => {
   const addInputWrap = document.querySelector('.input-wrap:nth-child(1)');
@@ -26,7 +49,6 @@ const showInput = (e) => {
 
     //if inputSearchTask is visible, replace it with search input
     if (searchInputWrap.classList.contains('on')) {
-      console.log('add new task wlacna');
       searchInputWrap.classList.toggle('on');
       showSearchInputBtn.classList.toggle('active');
     }
@@ -36,7 +58,6 @@ const showInput = (e) => {
 
     //if inputAddTask is visible, replace it with search input
     if (addInputWrap.classList.contains('on')) {
-      console.log('add new task wlacna');
       addInputWrap.classList.toggle('on');
       showAddInputBtn.classList.toggle('active');
     }
@@ -194,3 +215,5 @@ inputSearchTask.addEventListener('input', searchTask);
 
 showAddInputBtn.addEventListener('click', showInput);
 showSearchInputBtn.addEventListener('click', showInput);
+
+showTasksBtns.forEach(btn => btn.addEventListener('click', showTasksList));
