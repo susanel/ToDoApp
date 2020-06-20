@@ -26,7 +26,7 @@
           </form>
         </div>
         <div class="input-wrap">
-          <input type="text" placeholder="Search..." data-name="search-input"><i class="fas fa-search"></i>
+          <input type="text" placeholder="Search..." data-name="search-input">
         </div>
       </div>
       <ul class="user-tasks" data-list="to-do">
@@ -51,9 +51,16 @@
       <ul class="user-tasks" data-list="completed">
       </ul>
       <div class="panel">
-        <div class="show-input"></div>
+        <div class="show-input">
+          <i class="fas fa-plus active"></i>
+          <i class="fas fa-search"></i>
+        </div>
         <div class="count-tasks"><span>0</span> Items left</div>
-        <div class="show-tasks"></div>
+        <div class="show-tasks">Show:
+          <div data-btn="btn-all">all</div>
+          <div data-btn="btn-active">active</div>
+          <div data-btn="btn-completed">completed</div>
+        </div>
       </div>
     </div>
   </section>

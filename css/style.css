@@ -132,32 +132,55 @@ body {
 }
 
 .wrap .board .panel {
-  -ms-flex-preferred-size: 100px;
-      flex-basis: 100px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: thistle;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: rgba(216, 191, 216, 0.9);
   text-align: center;
-  line-height: 100px;
   font-size: 2rem;
+  padding: 10px 20px;
+  border-radius: 10px 10px 30px 30px;
 }
 
 .wrap .board .panel .show-input {
-  -ms-flex-preferred-size: 15%;
-      flex-basis: 15%;
-  background-color: red;
+  margin-left: 40px;
+}
+
+.wrap .board .panel .show-input i {
+  font-size: 3rem;
+  padding: 10px 10px;
+  cursor: pointer;
+  color: #555;
+}
+
+.wrap .board .panel .show-input i.active {
+  color: black;
 }
 
 .wrap .board .panel .count-tasks {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  line-height: 50px;
+  margin: 0 20px;
+  border-right: 1px dashed black;
+  border-left: 1px dashed black;
 }
 
-.wrap .board .panel .show-tasks {
-  -ms-flex-preferred-size: 25%;
-      flex-basis: 25%;
-  background-color: pink;
+.wrap .board .panel .show-tasks div {
+  display: inline-block;
+  padding: 5px 5px;
+  margin: 0 3px;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.wrap .board .panel .show-tasks div:hover {
+  background-color: floralWhite;
 }
 /*# sourceMappingURL=style.css.map */
