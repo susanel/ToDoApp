@@ -3,7 +3,7 @@ const form = document.querySelector('form');
 const inputAddTask = document.querySelector('input[data-name="add-input"');
 const inputSearchTask = document.querySelector('input[data-name="search-input"');
 const ulPending = document.querySelector('ul[data-list="to-do"]');
-const ulCompleted = document.querySelector('ul[data-list="completed"]');
+const ulCompleted = document.querySelector('ul[data-list="done"]');
 
 const spanTasksNumber = document.querySelector('.count-tasks span');
 const showAddInputBtn = document.querySelector('.fa-plus');
@@ -113,26 +113,24 @@ const removeTask = (e) => {
 }
 
 const addCompletedTask = (e) => {
-  // console.log(e.target.parentNode);
-  const completedTask = e.target.parentNode;
+  // console.log(e.target); //i
+  const completedTask = e.target.parentNode; //li
   const index = e.target.parentNode.dataset.key;
 
   completedTask.classList.toggle('ongoing');
   completedTask.classList.toggle('completed');
+
   if (completedTask.classList.contains('completed')) {
     // console.log('task completed');
 
-    //remove completed task from pendingTasksArray
-    if (completedTask.parentNode.dataset.list === "to-do") {
-      pendingTasksArray.splice(index, 1);
-      renderTasksList();
-      countTasks()
+    //changes icon to .fa-undo
+    e.target.outerHTML = '<i class="fas fa-undo"></i>';
+    completedTask.querySelector('.fa-undo').addEventListener('click', addCompletedTask);
 
-    } else {
-      //dont 
-      console.log('nie ma juz w to do');
-      return
-    }
+    //remove completed task from pendingTasksArray and ulPending
+    pendingTasksArray.splice(index, 1);
+    renderTasksList();
+    countTasks()
 
     //update completedTaskArray with new finished task
     completedTasksArray.push(completedTask);
@@ -142,15 +140,13 @@ const addCompletedTask = (e) => {
 
   } else if (completedTask.classList.contains('ongoing')) {
 
-    //delete task from completedTaskList
-    if (completedTask.parentNode.dataset.list === "completed") {
-      completedTasksArray.splice(index, 1);
-      renderCompletedTasksList()
+    //changes icon to .fa-check
+    e.target.outerHTML = '<i class="fas fa-check"></i>';
+    completedTask.querySelector('.fa-check').addEventListener('click', addCompletedTask);
 
-    } else {
-      console.log('nie ma juz w completed');
-      return
-    }
+    //remove task from completedTaskList and ulCompleted
+    completedTasksArray.splice(index, 1);
+    renderCompletedTasksList()
 
     //add task back to ToDoList
     pendingTasksArray.push(completedTask);
@@ -211,7 +207,6 @@ const renderExampleTasks = () => {
     exampleTask.querySelector('.fa-times').addEventListener('click', removeTask);
     exampleTask.querySelector('.fa-check').addEventListener('click', addCompletedTask);
   }
-
   countTasks()
 }
 
