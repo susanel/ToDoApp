@@ -15,16 +15,13 @@ body {
   background-image: url("../img/chicago.jpg");
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .wrap {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
   width: 80%;
-  min-height: 80vh;
+  margin: 0 auto;
+  padding: 10vh 0;
 }
 
 .wrap h1.title {
