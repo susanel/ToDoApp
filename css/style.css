@@ -26,12 +26,13 @@ body {
 
 .wrap h1.title {
   margin-bottom: 10px;
-  font-size: 5rem;
   line-height: 7rem;
+  font-size: 5rem;
   font-family: 'Playfair Display', serif;
 }
 
 .wrap .board {
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -39,7 +40,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 10px;
 }
 
 .wrap .board .user-input .input-wrap {
@@ -53,7 +53,7 @@ body {
 .wrap .board .user-input .input-wrap input {
   outline: none;
   font-size: 2.4rem;
-  width: calc(100% - 4.4rem);
+  width: calc(100% - 5rem);
   border: none;
 }
 
@@ -66,9 +66,10 @@ body {
 }
 
 .wrap .board .user-input .input-wrap i {
-  font-size: 2.4rem;
+  font-size: 3rem;
   line-height: 2.8rem;
-  padding: 0 10px;
+  margin-right: 10px;
+  width: 30px;
   cursor: pointer;
 }
 
@@ -96,10 +97,12 @@ body {
 
 .wrap .board ul.user-tasks li i {
   display: block;
-  padding-right: 10px;
+  width: 3rem;
+  margin-right: 10px;
   font-size: 3rem;
   line-height: 40px;
   cursor: pointer;
+  text-align: center;
 }
 
 .wrap .board ul.user-tasks li p {
@@ -109,53 +112,54 @@ body {
 }
 
 .wrap .board ul.user-tasks li:nth-child(odd) {
-  background-color: tomato;
+  background-color: rgba(236, 186, 126, 0.7);
 }
 
 .wrap .board ul.user-tasks li:nth-child(even) {
-  background-color: papayawhip;
+  background-color: rgba(230, 172, 135, 0.7);
 }
 
 .wrap .board ul.user-tasks li.ongoing i {
-  color: white;
+  color: black;
 }
 
 .wrap .board ul.user-tasks li.completed {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(56, 50, 48, 0.6);
 }
 
-.wrap .board ul.user-tasks li.completed i {
-  color: green;
+.wrap .board ul.user-tasks li.completed i.fa-check-square {
+  color: black;
 }
 
 .wrap .board ul.user-tasks li.completed p {
   text-decoration: line-through;
-  color: #555;
+  color: white;
 }
 
 .wrap .board .panel {
+  padding: 10px 20px;
+  border-radius: 10px 10px 30px 30px;
+  background-color: rgba(111, 82, 71, 0.87);
+  text-align: center;
+  font-size: 2rem;
+  color: rgba(255, 239, 213, 0.7);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: rgba(216, 191, 216, 0.9);
-  text-align: center;
-  font-size: 2rem;
-  padding: 10px 20px;
-  border-radius: 10px 10px 30px 30px;
 }
 
 .wrap .board .panel .show-input {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 
 .wrap .board .panel .show-input i {
   font-size: 3rem;
-  padding: 10px 10px;
+  width: 3rem;
+  margin: 10px 10px;
   cursor: pointer;
-  color: #555;
 }
 
 .wrap .board .panel .show-input i.active {
@@ -176,13 +180,14 @@ body {
   display: inline-block;
   padding: 5px 5px;
   margin: 0 3px;
-  border: 1px solid black;
+  border: 1px solid rgba(255, 239, 213, 0.7);
   border-radius: 8px;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .wrap .board .panel .show-tasks div:hover {
-  background-color: floralWhite;
+  color: #6f5247;
+  background-color: rgba(255, 239, 213, 0.7);
 }
 /*# sourceMappingURL=style.css.map */

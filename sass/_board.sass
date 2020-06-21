@@ -1,7 +1,6 @@
 // FONTS
   // font-family: 'Playfair Display', serif;
   // font-family: 'Muli', sans-serif;
-  
 
 .wrap
   width: 80%
@@ -10,14 +9,14 @@
   // filter: blur(2px)
   h1.title
     margin-bottom: 10px
-    font-size: 5rem
     line-height: 7rem
+    font-size: 5rem
     font-family: 'Playfair Display', serif;
   .board
+    padding: 10px
     // flex parent
     display: flex
     flex-direction: column
-    padding: 10px
     .user-input
       .input-wrap
         padding: 5px 20px
@@ -28,7 +27,7 @@
         input
           outline: none
           font-size: 2.4rem
-          width: calc(100% - 4.4rem)
+          width: calc(100% - 5rem)
           border: none
         button
           // button is a inline-block element and has a default margin i had to cancel with float: right
@@ -38,9 +37,12 @@
           background-color: transparent
           outline: none
         i
-          font-size: 2.4rem
+          font-size: 3rem
           line-height: 2.8rem
-          padding: 0 10px
+          // padding: 0 10px
+          // padding-right: 10px
+          margin-right: 10px
+          width: 30px
           cursor: pointer
         &.on
           display: block
@@ -60,43 +62,46 @@
         line-height: 40px
         i
           display: block
-          padding-right: 10px
+          width: 3rem
+          margin-right: 10px
           font-size: 3rem
           line-height: 40px
           cursor: pointer
+          text-align: center
         p
           flex-grow: 1
         &:nth-child(odd)
-          background-color: tomato
+          background-color: rgba(236, 186, 126, 0.7)
         &:nth-child(even)
-          background-color: papayawhip
+          background-color: rgba(230, 172, 135, 0.7) 
       li.ongoing 
         i
-          color: white
+          color: black
       li.completed
-        background-color: rgba(255, 255, 255, 0.5)
-        i
-          color: green
+        background-color: rgba(56, 50, 48, 0.6)
+        i.fa-check-square
+          color: black
         p
           text-decoration: line-through
-          color: #555
+          color: white
     .panel
-      // flex child
+      padding: 10px 20px
+      border-radius: 10px 10px 30px 30px
+      background-color: rgba(111, 82, 71, 0.87)
+      text-align: center
+      font-size: 2rem
+      color: $yellowish
       //flex parent
       display: flex
       align-items: center
-      background-color: rgba(216, 191, 216, 0.9)
-      text-align: center
-      font-size: 2rem
-      padding: 10px 20px
-      border-radius: 10px 10px 30px 30px
+      // flex child
       .show-input
-        margin-left: 40px
+        margin-left: 30px
         i
           font-size: 3rem
-          padding: 10px 10px
+          width: 3rem
+          margin: 10px 10px
           cursor: pointer
-          color: #555
           &.active
             color: black
       .count-tasks
@@ -110,12 +115,13 @@
           display: inline-block
           padding: 5px 5px
           margin: 0 3px
-          border: 1px solid black
+          border: 1px solid $yellowish
           border-radius: 8px
           text-transform: uppercase
           cursor: pointer
           &:hover
-            background-color: floralWhite
+            color: rgb(111, 82, 71)
+            background-color: $yellowish
 
 
 

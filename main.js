@@ -123,9 +123,9 @@ const addCompletedTask = (e) => {
   if (completedTask.classList.contains('completed')) {
     // console.log('task completed');
 
-    //changes icon to .fa-undo
-    e.target.outerHTML = '<i class="fas fa-undo"></i>';
-    completedTask.querySelector('.fa-undo').addEventListener('click', addCompletedTask);
+    //changes icon to .fa-check-square
+    e.target.outerHTML = '<i class="fas fa-check-square"></i>';
+    completedTask.querySelector('.fa-check-square').addEventListener('click', addCompletedTask);
 
     //remove completed task from pendingTasksArray and ulPending
     pendingTasksArray.splice(index, 1);
@@ -140,9 +140,9 @@ const addCompletedTask = (e) => {
 
   } else if (completedTask.classList.contains('ongoing')) {
 
-    //changes icon to .fa-check
-    e.target.outerHTML = '<i class="fas fa-check"></i>';
-    completedTask.querySelector('.fa-check').addEventListener('click', addCompletedTask);
+    //changes icon to .fa-square
+    e.target.outerHTML = '<i class="far fa-square"></i>';
+    completedTask.querySelector('.fa-square').addEventListener('click', addCompletedTask);
 
     //remove task from completedTaskList and ulCompleted
     completedTasksArray.splice(index, 1);
@@ -170,7 +170,7 @@ const addNewTask = (e) => {
   task.classList.add('task');
   task.classList.add('ongoing');
   // task.dataset.
-  task.innerHTML = `<i class="fas fa-check"></i>
+  task.innerHTML = `<i class="far fa-square"></i>
   <p>${inputText}</p>
   <i class="fas fa-times"></i>`;
 
@@ -188,7 +188,7 @@ const addNewTask = (e) => {
 
   //add eventListener to buttons of new elements
   task.querySelector('.fa-times').addEventListener('click', removeTask);
-  task.querySelector('.fa-check').addEventListener('click', addCompletedTask);
+  task.querySelector('.fa-square').addEventListener('click', addCompletedTask);
 }
 
 const renderExampleTasks = () => {
@@ -197,14 +197,14 @@ const renderExampleTasks = () => {
     let exampleTask = document.createElement('li');
     exampleTask.classList.add('task');
     exampleTask.classList.add('ongoing')
-    exampleTask.innerHTML = `<i class="fas fa-check"></i>
+    exampleTask.innerHTML = `<i class="far fa-square"></i>
     <p>${exampleTexts[i]}</p>
     <i class="fas fa-times"></i>`;
     pendingTasksArray.push(exampleTask)
 
     //add eventListener to buttons of example elements
     exampleTask.querySelector('.fa-times').addEventListener('click', removeTask);
-    exampleTask.querySelector('.fa-check').addEventListener('click', addCompletedTask);
+    exampleTask.querySelector('.fa-square').addEventListener('click', addCompletedTask);
   }
   renderTasksList()
   countTasks()
@@ -215,7 +215,7 @@ renderExampleTasks()
 
 // ADD EVENT LISTENERS
 
-form.addEventListener('submit', addNewTask)
+form.addEventListener('submit', addNewTask);
 
 inputSearchTask.addEventListener('input', searchTask);
 
