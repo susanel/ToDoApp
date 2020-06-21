@@ -72,9 +72,16 @@ const searchTask = (e) => {
 
   const searchText = e.target.value.toLowerCase();
 
+  //search in pending Tasks
   const tasks = allTasksArray.filter(li => li.textContent.toLowerCase().includes(searchText));
-  ulPending.textContent = "";
+  ulPending.textContent = '';
   tasks.forEach(li => ulPending.appendChild(li));
+
+  //search in completed tasks
+  const tasksCompleted = completedTasksArray.filter(li => li.textContent.toLowerCase().includes(searchText));
+  ulCompleted.textContent = '';
+  tasksCompleted.forEach(li => ulCompleted.appendChild(li));
+
 }
 
 const countTasks = () => {
