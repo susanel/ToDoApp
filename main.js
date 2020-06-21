@@ -1,9 +1,3 @@
-//TO-DO:
-// * update searchTask() function - it doesn't filter tasks from Completed Tasks Array:
-// ** Solutions:
-// *** clear completed tasks from searching
-// *** add possibility to search from completed tasks
-
 // Picking up elements
 const form = document.querySelector('form');
 const inputAddTask = document.querySelector('input[data-name="add-input"');
@@ -12,15 +6,15 @@ const ulPending = document.querySelector('ul[data-list="to-do"]');
 const ulCompleted = document.querySelector('ul[data-list="completed"]');
 
 const spanTasksNumber = document.querySelector('.count-tasks span');
-const removeBtns = document.querySelectorAll('i.fa-times')
 const showAddInputBtn = document.querySelector('.fa-plus');
 const showSearchInputBtn = document.querySelector('.fa-search');
-const showTasksBtns = document.querySelectorAll('.show-tasks [data-btn]')
+const showTasksBtns = document.querySelectorAll('.show-tasks [data-btn]');
 
-const allTasksArray = [...document.getElementsByClassName('task')]; //szybki update tablicy o elementy juz zapisane na stronie - dla testu, usunac pozniej
-const activeTasksArray = [];
+const pendingTasksArray = [];
 const completedTasksArray = [];
 
+
+// FUNCTIONS
 
 const showTasksList = (e) => {
 
@@ -73,7 +67,7 @@ const searchTask = (e) => {
   const searchText = e.target.value.toLowerCase();
 
   //search in pending Tasks
-  const tasks = allTasksArray.filter(li => li.textContent.toLowerCase().includes(searchText));
+  const tasks = pendingTasksArray.filter(li => li.textContent.toLowerCase().includes(searchText));
   ulPending.textContent = '';
   tasks.forEach(li => ulPending.appendChild(li));
 
@@ -85,12 +79,12 @@ const searchTask = (e) => {
 }
 
 const countTasks = () => {
-  spanTasksNumber.textContent = allTasksArray.length;
+  spanTasksNumber.textContent = pendingTasksArray.length;
 }
 
 const renderTasksList = () => {
   ulPending.textContent = "";
-  allTasksArray.forEach((task, key) => {
+  pendingTasksArray.forEach((task, key) => {
     task.dataset.key = key;
     ulPending.appendChild(task);
   })
@@ -108,7 +102,7 @@ const removeTask = (e) => {
   const index = e.target.parentNode.dataset.key;
   if (e.target.parentNode.classList.contains('ongoing')) {
     // console.log('ongoing');
-    allTasksArray.splice(index, 1);
+    pendingTasksArray.splice(index, 1);
     renderTasksList();
   } else if (e.target.parentNode.classList.contains('completed')) {
     // console.log('completed');
@@ -128,9 +122,9 @@ const addCompletedTask = (e) => {
   if (completedTask.classList.contains('completed')) {
     // console.log('task completed');
 
-    //remove completed task from allTasksArray
+    //remove completed task from pendingTasksArray
     if (completedTask.parentNode.dataset.list === "to-do") {
-      allTasksArray.splice(index, 1);
+      pendingTasksArray.splice(index, 1);
       renderTasksList();
       countTasks()
 
@@ -159,11 +153,10 @@ const addCompletedTask = (e) => {
     }
 
     //add task back to ToDoList
-    allTasksArray.push(completedTask);
+    pendingTasksArray.push(completedTask);
     renderTasksList();
     countTasks();
   }
-
 }
 
 const addNewTask = (e) => {
@@ -186,7 +179,7 @@ const addNewTask = (e) => {
   <i class="fas fa-times"></i>`;
 
   //update the array
-  allTasksArray.push(task);
+  pendingTasksArray.push(task);
 
   //update list and show it
   renderTasksList();
@@ -200,16 +193,34 @@ const addNewTask = (e) => {
   //add eventListener to buttons of new elements
   task.querySelector('.fa-times').addEventListener('click', removeTask);
   task.querySelector('.fa-check').addEventListener('click', addCompletedTask);
-
 }
 
-form.addEventListener('submit', addNewTask)
-// dotyczy tasków przykładowych na stronie - usunąć po usunieciu tych tasków (2 razy add event listener)
-removeBtns.forEach(btn => {
-  btn.addEventListener('click', removeTask)
-})
-document.querySelectorAll('.fa-check').forEach(btn => btn.addEventListener('click', addCompletedTask))
+const renderExampleTasks = () => {
+  const exampleTexts = ['learn React', 'learn SASS', 'learn Node.js'];
+  for (let i = 0; i < exampleTexts.length; i++) {
+    let exampleTask = document.createElement('li');
+    exampleTask.classList.add('task');
+    exampleTask.classList.add('ongoing')
+    exampleTask.innerHTML = `<i class="fas fa-check"></i>
+    <p>${exampleTexts[i]}</p>
+    <i class="fas fa-times"></i>`;
+    ulPending.appendChild(exampleTask);
+    pendingTasksArray.push(exampleTask)
 
+    //add eventListener to buttons of example elements
+    exampleTask.querySelector('.fa-times').addEventListener('click', removeTask);
+    exampleTask.querySelector('.fa-check').addEventListener('click', addCompletedTask);
+  }
+
+  countTasks()
+}
+
+renderExampleTasks()
+
+
+// ADD EVENT LISTENERS
+
+form.addEventListener('submit', addNewTask)
 
 inputSearchTask.addEventListener('input', searchTask);
 
