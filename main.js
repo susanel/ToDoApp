@@ -200,13 +200,13 @@ const renderExampleTasks = () => {
     exampleTask.innerHTML = `<i class="fas fa-check"></i>
     <p>${exampleTexts[i]}</p>
     <i class="fas fa-times"></i>`;
-    ulPending.appendChild(exampleTask);
     pendingTasksArray.push(exampleTask)
 
     //add eventListener to buttons of example elements
     exampleTask.querySelector('.fa-times').addEventListener('click', removeTask);
     exampleTask.querySelector('.fa-check').addEventListener('click', addCompletedTask);
   }
+  renderTasksList()
   countTasks()
 }
 
