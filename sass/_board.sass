@@ -8,7 +8,6 @@
   width: 80%
   margin: 0 auto
   padding: 10vh 0
-
   h1.title
     margin-bottom: 10px
     line-height: 8rem
@@ -118,11 +117,13 @@
     margin: 20px auto 0
     cursor: pointer
     transition: .3s linear
+    outline: none
     &:hover
       filter: drop-shadow(10px 10px rgb(111, 82, 71))
-// .modal-wrap 
-//   display: none
 .modal-wrap 
+  display: none
+.modal-wrap.active
+  display: block
   position: fixed
   top: 0
   left: 0

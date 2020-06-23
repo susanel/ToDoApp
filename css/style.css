@@ -210,6 +210,7 @@ body {
   cursor: pointer;
   -webkit-transition: .3s linear;
   transition: .3s linear;
+  outline: none;
 }
 
 .wrap button.stats:hover {
@@ -218,6 +219,11 @@ body {
 }
 
 .modal-wrap {
+  display: none;
+}
+
+.modal-wrap.active {
+  display: block;
   position: fixed;
   top: 0;
   left: 0;
@@ -228,7 +234,7 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-.modal-wrap .modal {
+.modal-wrap.active .modal {
   width: 70%;
   height: 80%;
   background-color: white;
@@ -241,13 +247,13 @@ body {
   text-align: center;
 }
 
-.modal-wrap .modal p {
+.modal-wrap.active .modal p {
   font-family: 'Playfair Display', serif;
   line-height: 80px;
   font-size: 4rem;
 }
 
-.modal-wrap .modal .left-column {
+.modal-wrap.active .modal .left-column {
   position: relative;
   float: left;
   width: 60%;
@@ -255,7 +261,7 @@ body {
   background: pink;
 }
 
-.modal-wrap .modal .left-column .chart {
+.modal-wrap.active .modal .left-column .chart {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -266,14 +272,14 @@ body {
   border-radius: 50%;
 }
 
-.modal-wrap .modal .right-column {
+.modal-wrap.active .modal .right-column {
   float: left;
   width: 40%;
   height: calc(100% - 80px);
   background-color: #a6c3d1;
 }
 
-.modal-wrap .modal .hide {
+.modal-wrap.active .modal .hide {
   position: absolute;
   top: 0;
   right: 0;
