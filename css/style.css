@@ -5,6 +5,12 @@
           box-sizing: border-box;
 }
 
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
 html {
   font-size: 10px;
   font-family: 'Muli', sans-serif;
@@ -18,6 +24,11 @@ body {
   background-attachment: fixed;
 }
 
+.wrap.blur {
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+
 .wrap {
   width: 80%;
   margin: 0 auto;
@@ -29,6 +40,7 @@ body {
   line-height: 8rem;
   font-size: 7rem;
   font-family: 'Playfair Display', serif;
+  font-style: italic;
 }
 
 .wrap .board {
@@ -203,5 +215,77 @@ body {
 .wrap button.stats:hover {
   -webkit-filter: drop-shadow(10px 10px #6f5247);
           filter: drop-shadow(10px 10px #6f5247);
+}
+
+.modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur;
+          filter: blur;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-wrap .modal {
+  width: 70%;
+  height: 80%;
+  background-color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 30px;
+  text-align: center;
+}
+
+.modal-wrap .modal p {
+  font-family: 'Playfair Display', serif;
+  line-height: 80px;
+  font-size: 4rem;
+}
+
+.modal-wrap .modal .left-column {
+  position: relative;
+  float: left;
+  width: 60%;
+  height: calc(100% - 80px);
+  background: pink;
+}
+
+.modal-wrap .modal .left-column .chart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 300px;
+  width: 300px;
+  border-radius: 50%;
+}
+
+.modal-wrap .modal .right-column {
+  float: left;
+  width: 40%;
+  height: calc(100% - 80px);
+  background-color: #a6c3d1;
+}
+
+.modal-wrap .modal .hide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  -webkit-transform: translate(50%, -50%);
+          transform: translate(50%, -50%);
+  background-color: black;
+  color: white;
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 3.8rem;
 }
 /*# sourceMappingURL=style.css.map */
