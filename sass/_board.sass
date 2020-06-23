@@ -122,6 +122,7 @@
       filter: drop-shadow(10px 10px rgb(111, 82, 71))
 .modal-wrap 
   display: none
+  transition: .5s
 .modal-wrap.active
   display: block
   position: fixed
@@ -141,17 +142,19 @@
     transform: translate(-50%, -50%)
     border-radius: 30px
     text-align: center
-    // overflow: hidden
+    background-color: #ffefd1
     p
       font-family: 'Playfair Display', serif
-      line-height: 80px
-      font-size: 4rem
+      height: 90px
+      line-height: 90px
+      font-size: 5rem
+      background-color: rgba(111, 82, 71, 0.87)
+      color: white
     .left-column
       position: relative
       float: left
       width: 60%
-      height: calc(100% - 80px)
-      background: pink
+      height: calc(100% - 90px)
       .chart
         position: absolute
         top: 50%
@@ -165,7 +168,26 @@
       float: left
       width: 40%
       height: calc(100% - 80px)
-      background-color: rgb(166, 195, 209)
+      padding: 50px 20px
+      text-align: center
+      font-size: 2.6rem
+      //flex parent
+      display: flex
+      flex-direction: column
+      align-items: flex-start
+      .legend-title
+        margin-bottom: 20px
+        font-size: 3.6rem
+        font-weight: 700
+      .done
+        display: inline-block
+        background-color: salmon
+        background-color: #d03e2d
+        margin-bottom: 10px
+        padding: 5px
+      .todo
+        background-color: orange
+        padding: 5px
     .hide
       position: absolute
       top: 0 
@@ -173,12 +195,12 @@
       transform: translate(50%, -50%)
       background-color: black
       color: white
-      height: 50px
-      width: 50px
-      line-height: 50px
+      height: 40px
+      width: 40px
+      line-height: 40px
       border-radius: 50%
       cursor: pointer
-      font-size: 3.8rem
+      font-size: 3rem
 
 
 
