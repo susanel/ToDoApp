@@ -18,7 +18,7 @@ const completedTasksArray = [];
 // FUNCTIONS
 const showPieChart = (per) => {
   const chart = document.querySelector(".chart");
-  chart.style.background = `conic-gradient(salmon 0% ${per}%,orange ${per}% 100%)`;
+  chart.style.background = `conic-gradient(#d03e2d 0% ${per}%,orange ${per}% 100%)`;
 };
 
 const countPercentage = () => {
@@ -26,15 +26,24 @@ const countPercentage = () => {
   const completedTasksNr = completedTasksArray.length;
 
   let percent = (completedTasksNr / allTasksNr) * 100;
-  percent = percent.toFixed(1);
-  showPieChart(percent);
+  percent = percent.toFixed();
+
+  return percent;
 };
 
 const generateModal = () => {
-  console.log("klik");
   document.querySelector(".modal-wrap").classList.add("active");
   document.querySelector(".wrap").classList.add("blur");
-  countPercentage();
+  const chartLegend = document.querySelector('[data-name="chart-legend"]');
+
+  const perCompleted = countPercentage();
+
+  chartLegend.innerHTML = `
+  <span class="legend-title">Tasks: </span>
+  <span class="done">completed: ${perCompleted}% </span>
+  <span class="todo">still to do: ${100 - perCompleted}%</span>`;
+
+  showPieChart(perCompleted);
 };
 
 const showTasksList = (e) => {
