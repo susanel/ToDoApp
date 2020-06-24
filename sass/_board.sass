@@ -2,6 +2,7 @@
   // font-family: 'Playfair Display', serif;
   // font-family: 'Muli', sans-serif;
 
+/*! 2. SECTION.WRAP */
 .wrap.blur
   filter: blur(2px)
 .wrap
@@ -14,115 +15,115 @@
     font-size: 7rem
     font-family: 'Playfair Display', serif
     font-style: italic
-  .board
-    padding: 10px
+
+.board
+  padding: 10px
+  // flex parent
+  display: flex
+  flex-direction: column
+
+.user-input
+  .input-wrap
+    display: none
+    height: 40px
+    padding: 5px 20px
+    margin-bottom: 10px
+    border-radius: 30px 30px 10px 10px
+    background-color: white
+    input
+      width: calc(100% - 5rem)
+      font-size: 2.6rem
+    button
+      // button is a inline-block element and has a default margin - I've canceled margin with float: right
+      display: block
+      float: right
+      background-color: transparent
+    i
+      line-height: 3rem
+      +icons-style()
+    &.on
+      display: block
+
+ul.user-tasks
+  // flex child
+  flex-grow: 1
+  font-size: 2rem
+  list-style: none
+  li
+    padding: 0 20px
+    margin-bottom: 5px
+    border-radius: 20px
+    line-height: 40px
     // flex parent
     display: flex
-    flex-direction: column
-    .user-input
-      .input-wrap
-        padding: 5px 20px
-        margin-bottom: 10px
-        border-radius: 30px 30px 10px 10px
-        background-color: white
-        display: none
-        input
-          outline: none
-          font-size: 2.6rem
-          width: calc(100% - 5rem)
-          border: none
-        button
-          // button is a inline-block element and has a default margin - I've canceled margin with float: right
-          display: block
-          float: right
-          border: none
-          background-color: transparent
-          outline: none
-        i
-          line-height: 2.8rem
-          +icons-style()
-        &.on
-          display: block
-    ul.user-tasks
-      // flex child
+    i
+      line-height: 40px
+      color: black
+      +icons-style()
+    p
       flex-grow: 1
-      font-size: 2rem
-      list-style: none
-      li
-        padding: 0 20px
-        margin-bottom: 5px
-        border-radius: 20px
-        line-height: 40px
-        // flex parent
-        display: flex
-        i
-          line-height: 40px
-          color: black
-          +icons-style()
-        p
-          flex-grow: 1
-        &:nth-child(odd)
-          background-color: rgba(236, 186, 126, 0.7)
-        &:nth-child(even)
-          background-color: rgba(230, 172, 135, 0.7) 
-      li.completed
-        background-color: rgba(56, 50, 48, 0.6)
-        p
-          text-decoration: line-through
-          color: white
-    .panel
-      padding: 10px 20px
-      border-radius: 10px 10px 30px 30px
-      background-color: rgba(111, 82, 71, 0.87)
-      text-align: center
-      font-size: 2rem
-      color: $yellowish
-      //flex parent
-      display: flex
-      align-items: center
-      // flex child
-      .show-input
-        margin-left: 30px
-        i
-          margin: 10px 10px
-          +icons-style()
-          &.active
-            color: black
-      .count-tasks
-        flex-grow: 1
-        line-height: 50px
-        margin: 0 20px
-        border-right: 1px dashed black
-        border-left: 1px dashed black
-      .show-tasks
-        div
-          display: inline-block
-          padding: 5px 5px
-          margin: 0 3px
-          border: 1px solid $yellowish
-          border-radius: 8px
-          text-transform: uppercase
-          cursor: pointer
-          &:hover
-            color: rgb(111, 82, 71)
-            background-color: $yellowish
-  button.stats
-    display: block
-    font-size: 3rem
-    background-color: white
-    border: none
-    padding: 10px 30px
-    font-family: 'Muli', sans-serif;
-    border-radius: 30px
-    margin: 20px auto 0
-    cursor: pointer
-    transition: .3s linear
-    outline: none
-    &:hover
-      filter: drop-shadow(10px 10px rgb(111, 82, 71))
+    &:nth-child(odd)
+      background-color: rgba(236, 186, 126, 0.7)
+    &:nth-child(even)
+      background-color: rgba(230, 172, 135, 0.7) 
+  li.completed
+    background-color: rgba(56, 50, 48, 0.6)
+    p
+      text-decoration: line-through
+      color: white
+
+.panel
+  padding: 10px 20px
+  border-radius: 10px 10px 30px 30px
+  background-color: rgba(111, 82, 71, 0.87)
+  text-align: center
+  font-size: 2rem
+  color: $yellowish
+  //flex parent
+  display: flex
+  align-items: center
+  // flex child
+  .show-input
+    margin-left: 30px
+    i
+      margin: 10px 10px
+      +icons-style()
+      &.active
+        color: black
+  .count-tasks
+    flex-grow: 1
+    line-height: 50px
+    margin: 0 20px
+    border-right: 1px dashed black
+    border-left: 1px dashed black
+  .show-tasks
+    div
+      display: inline-block
+      padding: 5px 5px
+      margin: 0 3px
+      border: 1px solid $yellowish
+      border-radius: 8px
+      text-transform: uppercase
+      cursor: pointer
+      &:hover
+        color: rgb(111, 82, 71)
+        background-color: $yellowish
+
+button.stats
+  display: block
+  padding: 10px 30px
+  margin: 20px auto 0
+  border-radius: 30px
+  font-family: 'Muli', sans-serif
+  font-size: 3rem
+  background-color: white
+  transition: .3s linear
+  &:hover
+    filter: drop-shadow(10px 10px $brown)
+
+/*! 3. SECTION.MODAL-WRAP */
 .modal-wrap 
   display: none
-  transition: .5s
 .modal-wrap.active
   display: block
   position: fixed
@@ -133,44 +134,40 @@
   filter: blur
   background-color: rgba(0,0,0,0.5)
   .modal
+    +positioning(50%, 50%)
     width: 70%
     height: 80%
-    background-color: white
-    position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+    max-width: 650px
+    max-height: 500px
     border-radius: 30px
+    background-color: $brown
     text-align: center
-    background-color: #ffefd1
     p
-      font-family: 'Playfair Display', serif
       height: 90px
       line-height: 90px
+      font-family: 'Playfair Display', serif
       font-size: 5rem
-      background-color: rgba(111, 82, 71, 0.87)
       color: white
     .left-column
       position: relative
       float: left
       width: 60%
       height: calc(100% - 90px)
+      border-bottom-left-radius: 30px 
+      background-color: #ffefd1
       .chart
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        height: 300px
-        width: 300px
+        +positioning(50%, 50%)
+        +circle(300px)
         // background: conic-gradient(salmon 0% 40%,orange 40% 100%)
-        border-radius: 50%
     .right-column
       float: left
       width: 40%
-      height: calc(100% - 80px)
+      height: calc(100% - 90px)
       padding: 50px 20px
-      text-align: center
+      border-bottom-right-radius: 30px 
       font-size: 2.6rem
+      background-color: #ffefd1
+      text-align: center
       //flex parent
       display: flex
       flex-direction: column
@@ -181,7 +178,6 @@
         font-weight: 700
       .done
         display: inline-block
-        background-color: salmon
         background-color: #d03e2d
         margin-bottom: 10px
         padding: 5px
@@ -189,18 +185,13 @@
         background-color: orange
         padding: 5px
     .hide
-      position: absolute
-      top: 0 
-      right: 0
-      transform: translate(50%, -50%)
+      +positioning(0, 100%)
+      +circle(40px)
+      line-height: 40px
       background-color: black
       color: white
-      height: 40px
-      width: 40px
-      line-height: 40px
-      border-radius: 50%
-      cursor: pointer
       font-size: 3rem
+      cursor: pointer
 
 
 

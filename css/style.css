@@ -1,3 +1,4 @@
+/*! 1. GENERAL */
 * {
   margin: 0;
   padding: 0;
@@ -24,6 +25,17 @@ body {
   background-attachment: fixed;
 }
 
+/*! BUTTONS, INPUTS, ICONS */
+button, input {
+  outline: none;
+  border: none;
+}
+
+button, i {
+  cursor: pointer;
+}
+
+/*! 2. SECTION.WRAP */
 .wrap.blur {
   -webkit-filter: blur(2px);
           filter: blur(2px);
@@ -43,7 +55,7 @@ body {
   font-style: italic;
 }
 
-.wrap .board {
+.board {
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -54,43 +66,39 @@ body {
           flex-direction: column;
 }
 
-.wrap .board .user-input .input-wrap {
+.user-input .input-wrap {
+  display: none;
+  height: 40px;
   padding: 5px 20px;
   margin-bottom: 10px;
   border-radius: 30px 30px 10px 10px;
   background-color: white;
-  display: none;
 }
 
-.wrap .board .user-input .input-wrap input {
-  outline: none;
-  font-size: 2.6rem;
+.user-input .input-wrap input {
   width: calc(100% - 5rem);
-  border: none;
+  font-size: 2.6rem;
 }
 
-.wrap .board .user-input .input-wrap button {
+.user-input .input-wrap button {
   display: block;
   float: right;
-  border: none;
   background-color: transparent;
-  outline: none;
 }
 
-.wrap .board .user-input .input-wrap i {
-  line-height: 2.8rem;
+.user-input .input-wrap i {
+  line-height: 3rem;
   font-size: 3rem;
   width: 3rem;
-  cursor: pointer;
   margin-right: 10px;
   text-align: center;
 }
 
-.wrap .board .user-input .input-wrap.on {
+.user-input .input-wrap.on {
   display: block;
 }
 
-.wrap .board ul.user-tasks {
+ul.user-tasks {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -98,7 +106,7 @@ body {
   list-style: none;
 }
 
-.wrap .board ul.user-tasks li {
+ul.user-tasks li {
   padding: 0 20px;
   margin-bottom: 5px;
   border-radius: 20px;
@@ -108,40 +116,39 @@ body {
   display: flex;
 }
 
-.wrap .board ul.user-tasks li i {
+ul.user-tasks li i {
   line-height: 40px;
   color: black;
   font-size: 3rem;
   width: 3rem;
-  cursor: pointer;
   margin-right: 10px;
   text-align: center;
 }
 
-.wrap .board ul.user-tasks li p {
+ul.user-tasks li p {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.wrap .board ul.user-tasks li:nth-child(odd) {
+ul.user-tasks li:nth-child(odd) {
   background-color: rgba(236, 186, 126, 0.7);
 }
 
-.wrap .board ul.user-tasks li:nth-child(even) {
+ul.user-tasks li:nth-child(even) {
   background-color: rgba(230, 172, 135, 0.7);
 }
 
-.wrap .board ul.user-tasks li.completed {
+ul.user-tasks li.completed {
   background-color: rgba(56, 50, 48, 0.6);
 }
 
-.wrap .board ul.user-tasks li.completed p {
+ul.user-tasks li.completed p {
   text-decoration: line-through;
   color: white;
 }
 
-.wrap .board .panel {
+.panel {
   padding: 10px 20px;
   border-radius: 10px 10px 30px 30px;
   background-color: rgba(111, 82, 71, 0.87);
@@ -156,24 +163,23 @@ body {
           align-items: center;
 }
 
-.wrap .board .panel .show-input {
+.panel .show-input {
   margin-left: 30px;
 }
 
-.wrap .board .panel .show-input i {
+.panel .show-input i {
   margin: 10px 10px;
   font-size: 3rem;
   width: 3rem;
-  cursor: pointer;
   margin-right: 10px;
   text-align: center;
 }
 
-.wrap .board .panel .show-input i.active {
+.panel .show-input i.active {
   color: black;
 }
 
-.wrap .board .panel .count-tasks {
+.panel .count-tasks {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -183,7 +189,7 @@ body {
   border-left: 1px dashed black;
 }
 
-.wrap .board .panel .show-tasks div {
+.panel .show-tasks div {
   display: inline-block;
   padding: 5px 5px;
   margin: 0 3px;
@@ -193,35 +199,31 @@ body {
   cursor: pointer;
 }
 
-.wrap .board .panel .show-tasks div:hover {
+.panel .show-tasks div:hover {
   color: #6f5247;
   background-color: rgba(255, 239, 213, 0.7);
 }
 
-.wrap button.stats {
+button.stats {
   display: block;
+  padding: 10px 30px;
+  margin: 20px auto 0;
+  border-radius: 30px;
+  font-family: 'Muli', sans-serif;
   font-size: 3rem;
   background-color: white;
-  border: none;
-  padding: 10px 30px;
-  font-family: 'Muli', sans-serif;
-  border-radius: 30px;
-  margin: 20px auto 0;
-  cursor: pointer;
   -webkit-transition: .3s linear;
   transition: .3s linear;
-  outline: none;
 }
 
-.wrap button.stats:hover {
+button.stats:hover {
   -webkit-filter: drop-shadow(10px 10px #6f5247);
           filter: drop-shadow(10px 10px #6f5247);
 }
 
+/*! 3. SECTION.MODAL-WRAP */
 .modal-wrap {
   display: none;
-  -webkit-transition: .5s;
-  transition: .5s;
 }
 
 .modal-wrap.active {
@@ -237,25 +239,25 @@ body {
 }
 
 .modal-wrap.active .modal {
-  width: 70%;
-  height: 80%;
-  background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
+  width: 70%;
+  height: 80%;
+  max-width: 650px;
+  max-height: 500px;
   border-radius: 30px;
+  background-color: #6f5247;
   text-align: center;
-  background-color: #ffefd1;
 }
 
 .modal-wrap.active .modal p {
-  font-family: 'Playfair Display', serif;
   height: 90px;
   line-height: 90px;
+  font-family: 'Playfair Display', serif;
   font-size: 5rem;
-  background-color: rgba(111, 82, 71, 0.87);
   color: white;
 }
 
@@ -264,6 +266,8 @@ body {
   float: left;
   width: 60%;
   height: calc(100% - 90px);
+  border-bottom-left-radius: 30px;
+  background-color: #ffefd1;
 }
 
 .modal-wrap.active .modal .left-column .chart {
@@ -272,18 +276,20 @@ body {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  height: 300px;
   width: 300px;
+  height: 300px;
   border-radius: 50%;
 }
 
 .modal-wrap.active .modal .right-column {
   float: left;
   width: 40%;
-  height: calc(100% - 80px);
+  height: calc(100% - 90px);
   padding: 50px 20px;
-  text-align: center;
+  border-bottom-right-radius: 30px;
   font-size: 2.6rem;
+  background-color: #ffefd1;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -304,7 +310,6 @@ body {
 
 .modal-wrap.active .modal .right-column .done {
   display: inline-block;
-  background-color: salmon;
   background-color: #d03e2d;
   margin-bottom: 10px;
   padding: 5px;
@@ -318,16 +323,16 @@ body {
 .modal-wrap.active .modal .hide {
   position: absolute;
   top: 0;
-  right: 0;
-  -webkit-transform: translate(50%, -50%);
-          transform: translate(50%, -50%);
+  left: 100%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height: 40px;
   background-color: black;
   color: white;
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
   font-size: 3rem;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
