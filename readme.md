@@ -10,4 +10,4 @@ it is still worth practicing. (:
 * Vanilla JavaScript
 
 ### Live version:
-[CLICK HERE](https://susanel92.github.io/ToDoApp/)
+[CLICK HERE](https://susanel.github.io/ToDoApp/)
